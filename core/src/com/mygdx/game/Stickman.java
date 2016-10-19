@@ -1,29 +1,26 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.ScreenAdapter;
-import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
 
 /**
- * Created by harit on 10/18/2016.
+ * Created by harit on 10/20/2016.
  */
-public class GameScreen extends ScreenAdapter {
-    private DemoGame demoGame;
+public class Stickman {
+
+    private Vector2 position;
     Texture walk_cycle,walk_cycle_R;
     TextureRegion[] animationframe_L,animationframe_R;
     Animation Run_animation_Left;
     Animation Run_animation_Right;
-    float elapsedTime;
+    int LEFT=2;
+    int RIGHT=1;
+    int STAND=0;
 
-    public GameScreen(DemoGame demoGame)
+    public Stickman()
     {
-        this.demoGame=demoGame;
         walk_cycle=new Texture("walkcycle.png");
         walk_cycle_R=new Texture("walkcycle_R.png");
         TextureRegion[][] tmpframe_L=TextureRegion.split(walk_cycle,256,256);
@@ -50,17 +47,23 @@ public class GameScreen extends ScreenAdapter {
         Run_animation_Left = new Animation(1f/4f,animationframe_L);
     }
 
-    public void render(float delta) {
-        elapsedTime+=Gdx.graphics.getDeltaTime();
-        SpriteBatch batch= demoGame.batch;
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        batch.begin();
-        batch.draw(Run_animation_Right.getKeyFrame(elapsedTime,true),0,0);
-        batch.end();
-
+    public Animation Status(int status)
+    {
+        if(status==LEFT)
+        {
+            return Run_animation_Left;
+        }else
+        {
+            return  Run_animation_Right;
+        }
     }
 
+    public Stickman(int x,int y)
+    {
+        position = new Vector2(x,y);
+    }
 
-
-
+    public Vector2 getPosition() {
+        return position;
+    }
 }
