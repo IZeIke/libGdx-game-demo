@@ -9,33 +9,29 @@ import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 
 /**
  * Created by harit on 10/18/2016.
  */
 public class GameScreen extends ScreenAdapter {
     private DemoGame demoGame;
-    private World world;
-    int status =0;
+    World world;
+    WorldRenderer worldRenderer;
+    int status=0;
     int SPEED=5;
-    float elapsedTime;
 
     public GameScreen(DemoGame demoGame)
     {
         this.demoGame=demoGame;
         world = new World(demoGame);
+        worldRenderer = new WorldRenderer(demoGame,world);
     }
 
     public void render(float delta) {
-        Vector2 pos =world.getStickman().getPosition();
         update(delta);
-        elapsedTime+=Gdx.graphics.getDeltaTime();
-        SpriteBatch batch= demoGame.batch;
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-        batch.begin();
-        batch.draw(world.getStickman().Status(status).getKeyFrame(elapsedTime,true),pos.x,pos.y);
-        batch.end();
-
+        worldRenderer.render(delta,getStatus());
     }
 
     private void update(float delta) {
@@ -55,8 +51,15 @@ public class GameScreen extends ScreenAdapter {
         else
         {
             status=world.getStickman().STAND;
+
         }
     }
+
+    private int getStatus()
+    {
+        return  status;
+    }
+
 
 
 

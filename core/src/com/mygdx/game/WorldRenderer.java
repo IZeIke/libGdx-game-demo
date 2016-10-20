@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Vector2;
 
@@ -11,49 +12,31 @@ import com.badlogic.gdx.math.Vector2;
  * Created by harit on 10/20/2016.
  */
 public class WorldRenderer {
-    World world;
     DemoGame demoGame;
-    Stickman stickman;
+    World world;
     SpriteBatch batch;
     float elapsedTime;
-    int status =0;
-    int SPEED=5;
+    private BitmapFont font;
 
-    WorldRenderer(World world,Stickman stickman)
+    WorldRenderer(DemoGame demoGame,World world)
     {
-        this.stickman=stickman;
+        this.demoGame = demoGame;
         batch = demoGame.batch;
+        this.world = world;
+        font = new BitmapFont();
     }
 
-    public void render(float delta) {
+    public void render(float delta,int status) {
         Vector2 pos =world.getStickman().getPosition();
-        update(delta);
         elapsedTime+= Gdx.graphics.getDeltaTime();
-        SpriteBatch batch= demoGame.batch;
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.begin();
         batch.draw(world.getStickman().Status(status).getKeyFrame(elapsedTime,true),pos.x,pos.y);
+        font.draw(batch, "Hello", 700, 60);
         batch.end();
 
     }
 
-    private void update(float delta) {
-        Vector2 pos =world.getStickman().getPosition();
-        if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            status=world.getStickman().LEFT;
-            pos.x-=SPEED;
 
-        }else
-        if(Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            status=world.getStickman().RIGHT;
-            pos.x+=SPEED;
-        }else
-        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            pos.y+=SPEED;
-        }
-        else
-        {
-            status=world.getStickman().STAND;
-        }
-    }
+
+
 }

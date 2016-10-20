@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.badlogic.gdx.math.Vector3;
 import com.sun.xml.internal.ws.client.sei.ResponseBuilder;
 
 /**
@@ -11,6 +12,7 @@ import com.sun.xml.internal.ws.client.sei.ResponseBuilder;
  */
 public class Stickman {
 
+    public static final int GRAVITY =-15;
     private Vector2 position;
     Texture walk_cycle,walk_cycle_R,stand;
     TextureRegion[] animationframe_L,animationframe_R,animationframe_S;
