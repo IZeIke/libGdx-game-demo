@@ -1,0 +1,19 @@
+package com.mygdx.game;
+
+/**
+ * Created by harit on 10/20/2016.
+ */
+public class World {
+
+    private Stickman stickman;
+    private DemoGame demoGame;
+
+    World(DemoGame demoGame) {
+        this.demoGame = demoGame;
+        stickman = new Stickman(100,100);
+    }
+
+    Stickman getStickman() {
+        return stickman;
+    }
+}

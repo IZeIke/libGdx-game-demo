@@ -4,6 +4,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Vector2;
+import com.sun.xml.internal.ws.client.sei.ResponseBuilder;
 
 /**
  * Created by harit on 10/20/2016.
@@ -11,22 +12,31 @@ import com.badlogic.gdx.math.Vector2;
 public class Stickman {
 
     private Vector2 position;
-    Texture walk_cycle,walk_cycle_R;
-    TextureRegion[] animationframe_L,animationframe_R;
+    Texture walk_cycle,walk_cycle_R,stand;
+    TextureRegion[] animationframe_L,animationframe_R,animationframe_S;
     Animation Run_animation_Left;
-    Animation Run_animation_Right;
+    Animation Run_animation_Right,Run_animation_Stand;
     int LEFT=2;
     int RIGHT=1;
     int STAND=0;
 
-    public Stickman()
+
+    public Vector2 getPosition() {
+        return position;
+    }
+
+    public Stickman(int x,int y)
     {
+        position = new Vector2(x,y);
         walk_cycle=new Texture("walkcycle.png");
         walk_cycle_R=new Texture("walkcycle_R.png");
+        stand = new Texture("stand.png");
         TextureRegion[][] tmpframe_L=TextureRegion.split(walk_cycle,256,256);
         TextureRegion[][] tmpframe_R=TextureRegion.split(walk_cycle_R,256,256);
+        TextureRegion[][] tmpframe_S=TextureRegion.split(stand,256,256);
         animationframe_L = new TextureRegion[4];
         animationframe_R = new TextureRegion[4];
+        animationframe_S = new TextureRegion[1];
         int index=0;
         for(int i=0;i<2;i++)
         {
@@ -43,8 +53,10 @@ public class Stickman {
                 animationframe_R[index2++]=tmpframe_R[i][j];
             }
         }
+        animationframe_S[0]=tmpframe_S[0][0];
         Run_animation_Right = new Animation(1f/4f,animationframe_R);
         Run_animation_Left = new Animation(1f/4f,animationframe_L);
+        Run_animation_Stand = new Animation(1f/1f,animationframe_S);
     }
 
     public Animation Status(int status)
@@ -53,17 +65,14 @@ public class Stickman {
         {
             return Run_animation_Left;
         }else
+        if(status==RIGHT)
         {
             return  Run_animation_Right;
+        }else
+        {
+            return  Run_animation_Stand;
         }
     }
 
-    public Stickman(int x,int y)
-    {
-        position = new Vector2(x,y);
-    }
 
-    public Vector2 getPosition() {
-        return position;
-    }
 }
