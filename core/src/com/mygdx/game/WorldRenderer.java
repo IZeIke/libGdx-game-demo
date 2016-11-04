@@ -33,6 +33,7 @@ public class WorldRenderer {
     Rectangle stickman;
     Vector2 pos;
     int zombieTime;
+    Texture background;
 
     WorldRenderer(DemoGame demoGame,World world)
     {
@@ -48,12 +49,14 @@ public class WorldRenderer {
         money = 0;
         timer = 0;
         zombieTime=0;
+        background = new Texture("background.jpg");
     }
 
     public void render(float delta,int status) {
         elapsedTime+= Gdx.graphics.getDeltaTime();
         batch.begin();
         //batch.draw(world.getStickman().Status(status).getKeyFrame(elapsedTime, true), pos.x, pos.y);
+        batch.draw(background,0,0);
         for(Rectangle stickman: stickmanArray) {
             batch.draw(world.getStickman().Status(status).getKeyFrame(elapsedTime, true), stickman.x, stickman.y, 128,128);
 
@@ -63,7 +66,7 @@ public class WorldRenderer {
             batch.draw(Zombie.Status().getKeyFrame(elapsedTime, true), zombie.x, zombie.y, 80,128);
         }
 
-        font.draw(batch,""+money,50,570);
+        font.draw(batch,""+money,50,690);
         batch.end();
         if(Gdx.input.justTouched()) {
             if(money>50){
@@ -114,7 +117,7 @@ public class WorldRenderer {
         Vector2 pos =world.getStickman().getPosition();
         Rectangle stickman = new Rectangle();
         stickman.x = -100;
-        stickman.y = 150;
+        stickman.y = 300;
         stickman.width=128;
         stickman.height=128;
         stickmanArray.add(stickman);
@@ -123,7 +126,7 @@ public class WorldRenderer {
     private void spawnzombie() {
         Rectangle zombie = new Rectangle();
         zombie.x = 1500;
-        zombie.y = 150;
+        zombie.y = 300;
         zombie.width=80;
         zombie.height=128;
         ZombieArray.add(zombie);
