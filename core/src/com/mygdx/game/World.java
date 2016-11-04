@@ -10,7 +10,7 @@ public class World {
 
     World(DemoGame demoGame) {
         this.demoGame = demoGame;
-        stickman = new Stickman(100,50);
+        stickman = new Stickman(0,50);
     }
 
     Stickman getStickman() {
