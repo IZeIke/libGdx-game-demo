@@ -5,6 +5,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 import com.sun.xml.internal.ws.client.sei.ResponseBuilder;
@@ -14,7 +15,8 @@ import com.sun.xml.internal.ws.client.sei.ResponseBuilder;
  */
 public class Stickman {
 
-    private Vector2 position;
+   // private Vector2 position;
+    private Rectangle position;
     TextureAtlas textureAtlas;
     Texture walk_cycle,walk_cycle_R,stand;
     TextureRegion[] animationframe_L,animationframe_R,animationframe_S,zombieframe_L;
@@ -26,13 +28,20 @@ public class Stickman {
     Enemy zombie;
 
 
-    public Vector2 getPosition() {
+    //public Vector2 getPosition() {
+      //  return position;
+    //}
+    public Rectangle getPosition(){
         return position;
     }
 
     public Stickman(int x,int y)
     {
-        position = new Vector2(x,y);
+        position = new Rectangle();
+        position.x =x;
+        position.y=y;
+        position.width=80;
+        position.height=128;
         walk_cycle=new Texture("walkcycle.png");
         walk_cycle_R=new Texture("walkcycle_R (2).png");
         stand = new Texture("stand.png");

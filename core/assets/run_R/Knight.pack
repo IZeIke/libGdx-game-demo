@@ -1,0 +1,120 @@
+
+Knight.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Run (1)
+  rotate: false
+  xy: 1, 1
+  size: 587, 707
+  orig: 587, 707
+  offset: 0, 0
+  index: -1
+
+Knight2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Run (10)
+  rotate: false
+  xy: 1, 1
+  size: 587, 707
+  orig: 587, 707
+  offset: 0, 0
+  index: -1
+
+Knight3.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Run (2)
+  rotate: false
+  xy: 1, 1
+  size: 587, 707
+  orig: 587, 707
+  offset: 0, 0
+  index: -1
+
+Knight4.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Run (3)
+  rotate: false
+  xy: 1, 1
+  size: 587, 707
+  orig: 587, 707
+  offset: 0, 0
+  index: -1
+
+Knight5.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Run (4)
+  rotate: false
+  xy: 1, 1
+  size: 587, 707
+  orig: 587, 707
+  offset: 0, 0
+  index: -1
+
+Knight6.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Run (5)
+  rotate: false
+  xy: 1, 1
+  size: 587, 707
+  orig: 587, 707
+  offset: 0, 0
+  index: -1
+
+Knight7.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Run (6)
+  rotate: false
+  xy: 1, 1
+  size: 587, 707
+  orig: 587, 707
+  offset: 0, 0
+  index: -1
+
+Knight8.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Run (7)
+  rotate: false
+  xy: 1, 1
+  size: 587, 707
+  orig: 587, 707
+  offset: 0, 0
+  index: -1
+
+Knight9.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Run (8)
+  rotate: false
+  xy: 1, 1
+  size: 587, 707
+  orig: 587, 707
+  offset: 0, 0
+  index: -1
+
+Knight10.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Run (9)
+  rotate: false
+  xy: 1, 1
+  size: 587, 707
+  orig: 587, 707
+  offset: 0, 0
+  index: -1

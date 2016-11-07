@@ -19,8 +19,8 @@ public class Enemy {
     public Enemy()
     {
         zombie=new Rectangle();
-        zombie.x=500;
-        zombie.y=150;
+        zombie.x=1500;
+        zombie.y=300;
         zombie.width=80;
         zombie.height=128;
         textureAtlas = new TextureAtlas(Gdx.files.internal("zombiepack-2/zombiepack.pack"));

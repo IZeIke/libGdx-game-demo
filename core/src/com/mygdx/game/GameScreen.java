@@ -8,6 +8,7 @@ import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
+import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.math.Vector3;
 
@@ -34,8 +35,8 @@ public class GameScreen extends ScreenAdapter {
         worldRenderer.render(delta,getStatus());
     }
 
-   /* private void update(float delta) {
-        Vector2 pos =world.getStickman().getPosition();
+    private void update(float delta) {
+        Rectangle pos =world.getStickman().getPosition();
         if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             status=world.getStickman().LEFT;
             pos.x-=SPEED;
@@ -47,21 +48,24 @@ public class GameScreen extends ScreenAdapter {
         }else
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
             pos.y+=SPEED;
+        }else
+        if(Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
+            pos.y-=SPEED;
         }
         else
         {
             status=world.getStickman().STAND;
 
         }
-    } */
+    }
 
-    private  void update(float delta)
+    /*private  void update(float delta)
     {
         Vector2 pos =world.getStickman().getPosition();
         status=world.getStickman().RIGHT;
         pos.x+=SPEED;
 
-    }
+    } */
 
     private int getStatus()
     {

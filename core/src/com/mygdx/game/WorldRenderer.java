@@ -2,10 +2,13 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.GL20;
+import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.math.Vector2;
@@ -31,12 +34,16 @@ public class WorldRenderer {
     int timer;
     Enemy Zombie;
     Rectangle stickman;
-    Vector2 pos;
+    Rectangle pos;
     int zombieTime;
     Texture background;
+    int SPEED;
+    ShapeRenderer shapeRenderer;
+    OrthographicCamera camera;
 
-    WorldRenderer(DemoGame demoGame,World world)
-    {
+    WorldRenderer(DemoGame demoGame, World world) {
+        camera = new OrthographicCamera();
+        shapeRenderer = new ShapeRenderer();
         stickman = new Rectangle();
         Zombie = new Enemy();
         this.demoGame = demoGame;
@@ -48,65 +55,68 @@ public class WorldRenderer {
         ZombieArray = new Array<Rectangle>();
         money = 0;
         timer = 0;
-        zombieTime=0;
+        zombieTime = 0;
         background = new Texture("background.jpg");
     }
 
-    public void render(float delta,int status) {
-        elapsedTime+= Gdx.graphics.getDeltaTime();
+    public void render(float delta, int status) {
+        elapsedTime += Gdx.graphics.getDeltaTime();
+        pos = world.getStickman().getPosition();
         batch.begin();
         //batch.draw(world.getStickman().Status(status).getKeyFrame(elapsedTime, true), pos.x, pos.y);
-        batch.draw(background,0,0);
-        for(Rectangle stickman: stickmanArray) {
-            batch.draw(world.getStickman().Status(status).getKeyFrame(elapsedTime, true), stickman.x, stickman.y, 128,128);
+        batch.draw(background, 0, 0);
+       // for (Rectangle stickman : stickmanArray) {
+            batch.draw(world.getStickman().Status(status).getKeyFrame(elapsedTime, true), pos.x, pos.y, 128, 128);
+       // }
 
+        for (Rectangle zombie : ZombieArray) {
+            batch.draw(Zombie.Status().getKeyFrame(elapsedTime, true), zombie.x, zombie.y, 80, 128);
         }
 
-        for(Rectangle zombie: ZombieArray) {
-            batch.draw(Zombie.Status().getKeyFrame(elapsedTime, true), zombie.x, zombie.y, 80,128);
-        }
-
-        font.draw(batch,""+money,50,690);
+        font.draw(batch, "" + money, 50, 690);
         batch.end();
-        if(Gdx.input.justTouched()) {
-            if(money>50){
+        if (Gdx.input.justTouched()) {
+            if (money > 50) {
                 spawnstrick();
-                money-=50;
+                money -= 50;
             }
         }
 
         update();
     }
 
-    private  void  update()
-    {
+    private void update() {
         Iterator<Rectangle> iter = stickmanArray.iterator();
-        while(iter.hasNext()) {
+        while (iter.hasNext()) {
             Rectangle stickman = iter.next();
             stickman.x += 150 * Gdx.graphics.getDeltaTime();
-
         }
 
         Iterator<Rectangle> iter_zombie = ZombieArray.iterator();
-        while(iter_zombie.hasNext()) {
+        while (iter_zombie.hasNext()) {
             Rectangle zombie = iter_zombie.next();
-            zombie.x -= 80 * Gdx.graphics.getDeltaTime();
-            if(zombie.overlaps(stickman))
+
+            if(zombie.overlaps(pos))
             {
-                System.out.print("555555");
+                zombie.x+= 0 *Gdx.graphics.getDeltaTime();
+                zombie.x += 80 * Gdx.graphics.getDeltaTime();
+                //iter_zombie.remove();
+            }
+            else
+            {
+                zombie.x -= 80 * Gdx.graphics.getDeltaTime();
             }
         }
 
         timer++;
-        if(timer>10) {
+        if (timer > 10) {
             money++;
-            timer=0;
+            timer = 0;
         }
 
-        if(zombieTime>500)
-        {
+        if (zombieTime > 500) {
             spawnzombie();
-            zombieTime=0;
+            zombieTime = 0;
         }
         zombieTime++;
 
@@ -114,12 +124,11 @@ public class WorldRenderer {
     }
 
     private void spawnstrick() {
-        Vector2 pos =world.getStickman().getPosition();
         Rectangle stickman = new Rectangle();
         stickman.x = -100;
         stickman.y = 300;
-        stickman.width=128;
-        stickman.height=128;
+        stickman.width = 128;
+        stickman.height = 128;
         stickmanArray.add(stickman);
     }
 
@@ -127,11 +136,9 @@ public class WorldRenderer {
         Rectangle zombie = new Rectangle();
         zombie.x = 1500;
         zombie.y = 300;
-        zombie.width=80;
-        zombie.height=128;
+        zombie.width = 80;
+        zombie.height = 128;
         ZombieArray.add(zombie);
     }
-
-
 
 }
