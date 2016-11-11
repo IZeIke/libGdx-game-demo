@@ -16,24 +16,21 @@ public class Enemy {
     Rectangle zombie;
 
 
-    public Enemy()
-    {
-        zombie=new Rectangle();
-        zombie.x=1500;
-        zombie.y=300;
-        zombie.width=80;
-        zombie.height=128;
+    public Enemy() {
+        zombie = new Rectangle();
+        zombie.x = 1500;
+        zombie.y = 300;
+        zombie.width = 80;
+        zombie.height = 128;
         textureAtlas = new TextureAtlas(Gdx.files.internal("zombiepack-2/zombiepack.pack"));
-        zombieanimation = new Animation(1f/10f, textureAtlas.getRegions());
+        zombieanimation = new Animation(1f / 10f, textureAtlas.getRegions());
     }
 
-    public Rectangle getposition()
-    {
-        return  zombie;
+    public Rectangle getposition() {
+        return zombie;
     }
 
-    public Animation Status()
-    {
-        return  zombieanimation;
+    public Animation Status() {
+        return zombieanimation;
     }
 }

@@ -35,7 +35,7 @@ public class GameScreen extends ScreenAdapter {
         worldRenderer.render(delta,getStatus());
     }
 
-    private void update(float delta) {
+    /* private void update(float delta) {
         Rectangle pos =world.getStickman().getPosition();
         if(Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
             status=world.getStickman().LEFT;
@@ -57,15 +57,16 @@ public class GameScreen extends ScreenAdapter {
             status=world.getStickman().STAND;
 
         }
-    }
+    } */
 
-    /*private  void update(float delta)
+    private  void update(float delta)
     {
-        Vector2 pos =world.getStickman().getPosition();
+        //Vector2 pos =world.getStickman().getPosition();
+        Rectangle pos =world.getStickman().getPosition();
         status=world.getStickman().RIGHT;
         pos.x+=SPEED;
 
-    } */
+    }
 
     private int getStatus()
     {

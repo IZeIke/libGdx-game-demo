@@ -15,7 +15,9 @@ import com.badlogic.gdx.math.Vector2;
 import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 /**
  * Created by harit on 10/20/2016.
@@ -27,24 +29,29 @@ public class WorldRenderer {
     float elapsedTime;
     private BitmapFont font;
     Array<Rectangle> stickmanArray;
+    Array<Swordman> swordmanArray;
+    Array<Swordman> swordmanOverlapArray;
     Array<Rectangle> ZombieArray;
-    long lastDropTime;
-    Texture bear;
     int money;
     int timer;
     Enemy Zombie;
-    Rectangle stickman;
+    Array<Rectangle> stickman;
+    Array<Rectangle> zombie;
     Rectangle pos;
     int zombieTime;
     Texture background;
-    int SPEED;
     ShapeRenderer shapeRenderer;
     OrthographicCamera camera;
+    int index;
+
 
     WorldRenderer(DemoGame demoGame, World world) {
         camera = new OrthographicCamera();
         shapeRenderer = new ShapeRenderer();
-        stickman = new Rectangle();
+        stickman = new Array<Rectangle>();
+        zombie = new Array<Rectangle>();
+        swordmanArray = new Array<Swordman>();
+        swordmanOverlapArray = new Array<Swordman>();
         Zombie = new Enemy();
         this.demoGame = demoGame;
         batch = demoGame.batch;
@@ -59,17 +66,32 @@ public class WorldRenderer {
         background = new Texture("background.jpg");
     }
 
+    public void getIndex(int i) {
+        index = i;
+    }
+
+
+    public void returnSwordman(Swordman rc) {
+        swordmanOverlapArray.add(rc);
+    }
+
+    public void returnZombie(Rectangle rc) {
+        zombie.add(rc);
+    }
+
     public void render(float delta, int status) {
         elapsedTime += Gdx.graphics.getDeltaTime();
         pos = world.getStickman().getPosition();
         batch.begin();
         //batch.draw(world.getStickman().Status(status).getKeyFrame(elapsedTime, true), pos.x, pos.y);
         batch.draw(background, 0, 0);
-       // for (Rectangle stickman : stickmanArray) {
-            batch.draw(world.getStickman().Status(status).getKeyFrame(elapsedTime, true), pos.x, pos.y, 128, 128);
-       // }
+        for (Swordman swordman : swordmanArray) {
+            returnSwordman(swordman);
+            batch.draw(swordman.getSwordmanAnimation().getKeyFrame(elapsedTime, true), swordman.getRectangle().x, swordman.getRectangle().y, 128, 128);
+        }
 
         for (Rectangle zombie : ZombieArray) {
+            returnZombie(zombie);
             batch.draw(Zombie.Status().getKeyFrame(elapsedTime, true), zombie.x, zombie.y, 80, 128);
         }
 
@@ -77,7 +99,7 @@ public class WorldRenderer {
         batch.end();
         if (Gdx.input.justTouched()) {
             if (money > 50) {
-                spawnstrick();
+                spawnSwordman();
                 money -= 50;
             }
         }
@@ -86,28 +108,66 @@ public class WorldRenderer {
     }
 
     private void update() {
-        Iterator<Rectangle> iter = stickmanArray.iterator();
-        while (iter.hasNext()) {
-            Rectangle stickman = iter.next();
-            stickman.x += 150 * Gdx.graphics.getDeltaTime();
-        }
+        swordmanUpdate();
+        zombieUpdate();
+        timeUpdate();
+    }
 
+    private void swordmanUpdate() {
+        Iterator<Swordman> iter = swordmanArray.iterator();
+        while (iter.hasNext()) {
+            Swordman swordman = iter.next();
+            try {
+                for (int i = 0; i < zombie.size; i++) {
+                    if (swordman.getRectangle().overlaps(zombie.get(i))) {
+                        swordman.getRectangle().x -= 150 * Gdx.graphics.getDeltaTime();
+                        //    swordman.HP--;
+
+                    }
+                }
+            } catch (IllegalStateException e) {
+
+            }
+            System.out.println(swordman.HP);
+            swordman.getRectangle().x += 150 * Gdx.graphics.getDeltaTime();
+            if (swordman.getHP() == 0) {
+                iter.remove();
+                for (Swordman swordman1 : swordmanOverlapArray) {
+                    swordmanOverlapArray.removeValue(swordman1, true);
+                }
+            }
+            if (swordman.getRectangle().x > 1280) {
+                iter.remove();
+            }
+        }
+    }
+
+    private void zombieUpdate() {
         Iterator<Rectangle> iter_zombie = ZombieArray.iterator();
         while (iter_zombie.hasNext()) {
             Rectangle zombie = iter_zombie.next();
+            try {
+                for (int i = 0; i < swordmanOverlapArray.size; i++) {
+                    if (zombie.overlaps(swordmanOverlapArray.get(i).getRectangle())) {
+                        zombie.x += 150 * Gdx.graphics.getDeltaTime();
+                        swordmanOverlapArray.get(i).HP--;
+                    }
+                }
 
-            if(zombie.overlaps(pos))
-            {
-                zombie.x+= 0 *Gdx.graphics.getDeltaTime();
-                zombie.x += 80 * Gdx.graphics.getDeltaTime();
-                //iter_zombie.remove();
+                zombie.x -= 150 * Gdx.graphics.getDeltaTime();
+
+                if (zombie.x < 0) {
+                    iter_zombie.remove();
+                }
+
+            } catch (IllegalStateException e) {
+
             }
-            else
-            {
-                zombie.x -= 80 * Gdx.graphics.getDeltaTime();
-            }
+
         }
+    }
 
+    private void timeUpdate() {
         timer++;
         if (timer > 10) {
             money++;
@@ -119,17 +179,20 @@ public class WorldRenderer {
             zombieTime = 0;
         }
         zombieTime++;
-
-
     }
 
-    private void spawnstrick() {
+
+    private void spawnSwordman() {
         Rectangle stickman = new Rectangle();
         stickman.x = -100;
         stickman.y = 300;
-        stickman.width = 128;
+        stickman.width = 80;
         stickman.height = 128;
-        stickmanArray.add(stickman);
+        Swordman swordman = new Swordman(stickman);
+        swordmanArray.add(swordman);
+        //stickmanArray.add(stickman);
+        // Stickman stickman = new Stickman(-100,300);
+        // stickmanArray.add(stickman.getPosition());
     }
 
     private void spawnzombie() {
