@@ -9,24 +9,27 @@ import com.badlogic.gdx.math.Rectangle;
  * Created by harit on 11/9/2016.
  */
 public class Swordman {
-    Animation SwordmanAnimation;
-    TextureAtlas textureAtlas;
+    Animation swordmanAnimation,attackAnimation,animation;
+    TextureAtlas textureAtlas,textureAtlas2;
     Rectangle swordman;
     int HP;
 
     public Swordman() {
         swordman = new Rectangle();
         textureAtlas = new TextureAtlas(Gdx.files.internal("run_R/Knight.pack"));
-        SwordmanAnimation = new Animation(1f / 10f, textureAtlas.getRegions());
-        HP = 5000;
-
+        textureAtlas2 = new TextureAtlas(Gdx.files.internal("knight_attack/knight_attack.pack"));
+        swordmanAnimation = new Animation(1f / 10f, textureAtlas.getRegions());
+        HP = 50;
     }
 
     public Swordman(Rectangle e) {
         swordman = e;
         textureAtlas = new TextureAtlas(Gdx.files.internal("run_R/Knight.pack"));
-        SwordmanAnimation = new Animation(1f / 10f, textureAtlas.getRegions());
-        HP = 50;
+        textureAtlas2 = new TextureAtlas(Gdx.files.internal("knight_attack/knight_attack.pack"));
+        swordmanAnimation = new Animation(1f / 10f, textureAtlas.getRegions());
+        attackAnimation = new Animation(1f / 10f, textureAtlas2.getRegions());
+        animation=swordmanAnimation;
+        HP = 500;
     }
 
     public int getHP() {
@@ -37,7 +40,18 @@ public class Swordman {
         return swordman;
     }
 
+    public void changeAnimation(int i)
+    {
+        if(i==1)
+        {
+            animation = attackAnimation;
+        }else
+        {
+            animation = swordmanAnimation;
+        }
+    }
+
     public Animation getSwordmanAnimation() {
-        return SwordmanAnimation;
+        return animation;
     }
 }

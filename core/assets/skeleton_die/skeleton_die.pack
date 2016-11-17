@@ -1,0 +1,66 @@
+
+skeleton_die.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+die
+  rotate: false
+  xy: 1, 367
+  size: 456, 364
+  orig: 456, 364
+  offset: 0, 0
+  index: 1
+die
+  rotate: false
+  xy: 1, 1
+  size: 456, 364
+  orig: 456, 364
+  offset: 0, 0
+  index: 2
+die
+  rotate: false
+  xy: 459, 367
+  size: 456, 364
+  orig: 456, 364
+  offset: 0, 0
+  index: 3
+die
+  rotate: false
+  xy: 459, 1
+  size: 456, 364
+  orig: 456, 364
+  offset: 0, 0
+  index: 4
+
+skeleton_die2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+die
+  rotate: false
+  xy: 1, 367
+  size: 456, 364
+  orig: 456, 364
+  offset: 0, 0
+  index: 5
+die
+  rotate: false
+  xy: 1, 1
+  size: 456, 364
+  orig: 456, 364
+  offset: 0, 0
+  index: 6
+die
+  rotate: false
+  xy: 459, 367
+  size: 456, 364
+  orig: 456, 364
+  offset: 0, 0
+  index: 7
+die
+  rotate: false
+  xy: 459, 1
+  size: 456, 364
+  orig: 456, 364
+  offset: 0, 0
+  index: 8

@@ -1,0 +1,120 @@
+
+Knight_dead.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Dead (1)
+  rotate: false
+  xy: 1, 1
+  size: 944, 751
+  orig: 944, 751
+  offset: 0, 0
+  index: -1
+
+Knight_dead2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Dead (10)
+  rotate: false
+  xy: 1, 1
+  size: 944, 751
+  orig: 944, 751
+  offset: 0, 0
+  index: -1
+
+Knight_dead3.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Dead (2)
+  rotate: false
+  xy: 1, 1
+  size: 944, 751
+  orig: 944, 751
+  offset: 0, 0
+  index: -1
+
+Knight_dead4.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Dead (3)
+  rotate: false
+  xy: 1, 1
+  size: 944, 751
+  orig: 944, 751
+  offset: 0, 0
+  index: -1
+
+Knight_dead5.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Dead (4)
+  rotate: false
+  xy: 1, 1
+  size: 944, 751
+  orig: 944, 751
+  offset: 0, 0
+  index: -1
+
+Knight_dead6.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Dead (5)
+  rotate: false
+  xy: 1, 1
+  size: 944, 751
+  orig: 944, 751
+  offset: 0, 0
+  index: -1
+
+Knight_dead7.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Dead (6)
+  rotate: false
+  xy: 1, 1
+  size: 944, 751
+  orig: 944, 751
+  offset: 0, 0
+  index: -1
+
+Knight_dead8.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Dead (7)
+  rotate: false
+  xy: 1, 1
+  size: 944, 751
+  orig: 944, 751
+  offset: 0, 0
+  index: -1
+
+Knight_dead9.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Dead (8)
+  rotate: false
+  xy: 1, 1
+  size: 944, 751
+  orig: 944, 751
+  offset: 0, 0
+  index: -1
+
+Knight_dead10.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Dead (9)
+  rotate: false
+  xy: 1, 1
+  size: 944, 751
+  orig: 944, 751
+  offset: 0, 0
+  index: -1

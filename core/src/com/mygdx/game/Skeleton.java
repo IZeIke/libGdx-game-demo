@@ -1,0 +1,50 @@
+package com.mygdx.game;
+
+import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.graphics.g2d.Animation;
+import com.badlogic.gdx.graphics.g2d.TextureAtlas;
+import com.badlogic.gdx.math.Rectangle;
+
+/**
+ * Created by harit on 11/15/2016.
+ */
+public class Skeleton {
+    Animation skeletonAnimation, attackAnimation, animation, dieAnimation;
+    TextureAtlas textureAtlas, textureAtlas2, textureAtlas3;
+    Rectangle skeleton;
+    int HP;
+
+    public Skeleton(Rectangle e) {
+        skeleton = e;
+        textureAtlas = new TextureAtlas(Gdx.files.internal("skeleton_walk/skeleton_run.pack"));
+        textureAtlas2 = new TextureAtlas(Gdx.files.internal("skeleton_attack/skeleton_attack.pack"));
+        textureAtlas3 = new TextureAtlas(Gdx.files.internal("skeleton_die/skeleton_die.pack"));
+        skeletonAnimation = new Animation(1f / 10f, textureAtlas.getRegions());
+        attackAnimation = new Animation(1f / 10f, textureAtlas2.getRegions());
+        dieAnimation = new Animation(1f / 8f, textureAtlas3.getRegions());
+        animation = skeletonAnimation;
+        HP = 500;
+    }
+
+    public int getHP() {
+        return HP;
+    }
+
+    public Rectangle getRectangle() {
+        return skeleton;
+    }
+
+    public void changeAnimation(int i) {
+        if (i == 1) {
+            animation = attackAnimation;
+        } else if (i == 3) {
+            animation = dieAnimation;
+        } else {
+            animation = skeletonAnimation;
+        }
+    }
+
+    public Animation getSkeletonAnimation() {
+        return animation;
+    }
+}

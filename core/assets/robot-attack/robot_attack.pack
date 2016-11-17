@@ -1,0 +1,96 @@
+
+robot_attack.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Melee (1)
+  rotate: false
+  xy: 1, 1
+  size: 567, 556
+  orig: 567, 556
+  offset: 0, 0
+  index: -1
+
+robot_attack2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Melee (2)
+  rotate: false
+  xy: 1, 1
+  size: 567, 556
+  orig: 567, 556
+  offset: 0, 0
+  index: -1
+
+robot_attack3.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Melee (3)
+  rotate: false
+  xy: 1, 1
+  size: 567, 556
+  orig: 567, 556
+  offset: 0, 0
+  index: -1
+
+robot_attack4.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Melee (4)
+  rotate: false
+  xy: 1, 1
+  size: 567, 556
+  orig: 567, 556
+  offset: 0, 0
+  index: -1
+
+robot_attack5.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Melee (5)
+  rotate: false
+  xy: 1, 1
+  size: 567, 556
+  orig: 567, 556
+  offset: 0, 0
+  index: -1
+
+robot_attack6.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Melee (6)
+  rotate: false
+  xy: 1, 1
+  size: 567, 556
+  orig: 567, 556
+  offset: 0, 0
+  index: -1
+
+robot_attack7.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Melee (7)
+  rotate: false
+  xy: 1, 1
+  size: 567, 556
+  orig: 567, 556
+  offset: 0, 0
+  index: -1
+
+robot_attack8.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Melee (8)
+  rotate: false
+  xy: 1, 1
+  size: 567, 556
+  orig: 567, 556
+  offset: 0, 0
+  index: -1

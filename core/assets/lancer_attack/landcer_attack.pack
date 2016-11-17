@@ -1,0 +1,43 @@
+
+landcer_attack.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+attack
+  rotate: false
+  xy: 1, 1
+  size: 699, 504
+  orig: 699, 504
+  offset: 0, 0
+  index: 4
+
+landcer_attack2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+attack
+  rotate: false
+  xy: 1, 1
+  size: 501, 576
+  orig: 501, 576
+  offset: 0, 0
+  index: 1
+attack
+  rotate: false
+  xy: 504, 1
+  size: 474, 576
+  orig: 474, 576
+  offset: 0, 0
+  index: 2
+
+landcer_attack3.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+attack
+  rotate: false
+  xy: 1, 1
+  size: 411, 576
+  orig: 411, 576
+  offset: 0, 0
+  index: 3

@@ -1,0 +1,52 @@
+
+golem_walk.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+idle
+  rotate: false
+  xy: 1, 355
+  size: 460, 352
+  orig: 460, 352
+  offset: 0, 0
+  index: 1
+idle
+  rotate: false
+  xy: 1, 1
+  size: 460, 352
+  orig: 460, 352
+  offset: 0, 0
+  index: 2
+idle
+  rotate: false
+  xy: 463, 355
+  size: 460, 352
+  orig: 460, 352
+  offset: 0, 0
+  index: 3
+idle
+  rotate: false
+  xy: 463, 1
+  size: 460, 352
+  orig: 460, 352
+  offset: 0, 0
+  index: 4
+
+golem_walk2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+idle
+  rotate: false
+  xy: 1, 1
+  size: 460, 352
+  orig: 460, 352
+  offset: 0, 0
+  index: 5
+idle
+  rotate: false
+  xy: 463, 1
+  size: 460, 352
+  orig: 460, 352
+  offset: 0, 0
+  index: 6

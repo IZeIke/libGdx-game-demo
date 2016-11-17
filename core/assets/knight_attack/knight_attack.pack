@@ -1,0 +1,120 @@
+
+knight_attack.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack (1)
+  rotate: false
+  xy: 1, 1
+  size: 587, 707
+  orig: 587, 707
+  offset: 0, 0
+  index: -1
+
+knight_attack2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack (10)
+  rotate: false
+  xy: 1, 1
+  size: 587, 707
+  orig: 587, 707
+  offset: 0, 0
+  index: -1
+
+knight_attack3.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack (2)
+  rotate: false
+  xy: 1, 1
+  size: 587, 707
+  orig: 587, 707
+  offset: 0, 0
+  index: -1
+
+knight_attack4.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack (3)
+  rotate: false
+  xy: 1, 1
+  size: 587, 707
+  orig: 587, 707
+  offset: 0, 0
+  index: -1
+
+knight_attack5.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack (4)
+  rotate: false
+  xy: 1, 1
+  size: 587, 707
+  orig: 587, 707
+  offset: 0, 0
+  index: -1
+
+knight_attack6.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack (5)
+  rotate: false
+  xy: 1, 1
+  size: 587, 707
+  orig: 587, 707
+  offset: 0, 0
+  index: -1
+
+knight_attack7.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack (6)
+  rotate: false
+  xy: 1, 1
+  size: 587, 707
+  orig: 587, 707
+  offset: 0, 0
+  index: -1
+
+knight_attack8.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack (7)
+  rotate: false
+  xy: 1, 1
+  size: 587, 707
+  orig: 587, 707
+  offset: 0, 0
+  index: -1
+
+knight_attack9.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack (8)
+  rotate: false
+  xy: 1, 1
+  size: 587, 707
+  orig: 587, 707
+  offset: 0, 0
+  index: -1
+
+knight_attack10.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack (9)
+  rotate: false
+  xy: 1, 1
+  size: 587, 707
+  orig: 587, 707
+  offset: 0, 0
+  index: -1

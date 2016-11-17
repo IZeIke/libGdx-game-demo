@@ -1,0 +1,120 @@
+
+ninja_attack.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack_
+  rotate: false
+  xy: 1, 1
+  size: 524, 565
+  orig: 524, 565
+  offset: 0, 0
+  index: 0
+
+ninja_attack2.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack_
+  rotate: false
+  xy: 1, 1
+  size: 524, 565
+  orig: 524, 565
+  offset: 0, 0
+  index: 1
+
+ninja_attack3.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack_
+  rotate: false
+  xy: 1, 1
+  size: 524, 565
+  orig: 524, 565
+  offset: 0, 0
+  index: 2
+
+ninja_attack4.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack_
+  rotate: false
+  xy: 1, 1
+  size: 524, 565
+  orig: 524, 565
+  offset: 0, 0
+  index: 3
+
+ninja_attack5.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack_
+  rotate: false
+  xy: 1, 1
+  size: 524, 565
+  orig: 524, 565
+  offset: 0, 0
+  index: 4
+
+ninja_attack6.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack_
+  rotate: false
+  xy: 1, 1
+  size: 524, 565
+  orig: 524, 565
+  offset: 0, 0
+  index: 5
+
+ninja_attack7.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack_
+  rotate: false
+  xy: 1, 1
+  size: 524, 565
+  orig: 524, 565
+  offset: 0, 0
+  index: 6
+
+ninja_attack8.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack_
+  rotate: false
+  xy: 1, 1
+  size: 524, 565
+  orig: 524, 565
+  offset: 0, 0
+  index: 7
+
+ninja_attack9.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack_
+  rotate: false
+  xy: 1, 1
+  size: 524, 565
+  orig: 524, 565
+  offset: 0, 0
+  index: 8
+
+ninja_attack10.png
+format: RGBA8888
+filter: Nearest,Nearest
+repeat: none
+Attack_
+  rotate: false
+  xy: 1, 1
+  size: 524, 565
+  orig: 524, 565
+  offset: 0, 0
+  index: 9
