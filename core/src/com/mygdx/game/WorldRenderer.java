@@ -28,6 +28,8 @@ public class WorldRenderer {
     SpriteBatch batch;
     float elapsedTime;
     private BitmapFont font;
+    private BitmapFont button;
+    private BitmapFont point;
     Array<Rectangle> stickmanArray;
     Array<Swordman> swordmanArray;
     Array<Swordman> swordmanOverlapArray;
@@ -43,6 +45,7 @@ public class WorldRenderer {
     Array<Gunner> gunnerOverlapArray;
     Array<Robot> robotArray;
     Array<Robot> robotOverlapArray;
+    int GameTime;
     int money;
     int timer;
     Array<Rectangle> stickman;
@@ -82,6 +85,10 @@ public class WorldRenderer {
         batch = demoGame.batch;
         this.world = world;
         font = new BitmapFont();
+        button = new BitmapFont();
+        button.setColor(Color.RED);
+        point = new BitmapFont();
+        point.setColor(Color.RED);
         font.getData().setScale(2);
         stickmanArray = new Array<Rectangle>();
         // ZombieArray = new Array<Rectangle>();
@@ -90,6 +97,7 @@ public class WorldRenderer {
         zombieTime = 0;
         skeletonTime =0;
         golemTime = 0;
+        GameTime = 0;
         background = new Texture("BG (2).png");
         Chareacter_Selected = new Texture("Chracter_selected.png");
     }
@@ -132,6 +140,8 @@ public class WorldRenderer {
         //batch.draw(world.getStickman().Status(status).getKeyFrame(elapsedTime, true), pos.x, pos.y);
         batch.draw(background, 0, 0);
         batch.draw(Chareacter_Selected,100,50);
+        button.draw(batch, "Q                      W                      E                      R", 100, 148);
+        point.draw(batch,"50                    100                    150                  200", 100, 64);
         for (Swordman swordman : swordmanArray) {
             returnSwordman(swordman);
             batch.draw(swordman.getSwordmanAnimation().getKeyFrame(elapsedTime, true), swordman.getRectangle().x, swordman.getRectangle().y, 128, 128);
@@ -178,28 +188,28 @@ public class WorldRenderer {
         font.draw(batch, "" + money, 50, 690);
         batch.end();
         if (Gdx.input.isKeyJustPressed(Input.Keys.Q)) {
-            if (money > 10) {
+            if (money > 50) {
                 spawnSwordman();
-                money -= 10;
+                money -= 50;
             }
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.W)) {
-            if (money > 10) {
+            if (money > 100) {
                 spawnGunner();
-                money -= 10;
+                money -= 100;
             }
         }
         if (Gdx.input.isKeyJustPressed(Input.Keys.E)) {
-            if (money > 10) {
+            if (money > 150) {
                 spawnLancer();
-                money -= 10;
+                money -= 150;
             }
         }
 
         if (Gdx.input.isKeyJustPressed(Input.Keys.R)) {
-            if (money > 10) {
+            if (money > 200) {
                 spawnRobot();
-                money -= 10;
+                money -= 200;
             }
         }
 
@@ -242,12 +252,12 @@ public class WorldRenderer {
                             swordman.getRectangle().x -= 120 * Gdx.graphics.getDeltaTime();
                             distance1 = swordman.getRectangle().x;
                             skeletonOverlapArray.get(i).HP--;
-                        }/*else
+                        }else
                         if(swordman.getRectangle().overlaps(golemOverlapArray.get(i).getRectangle())){
                             swordman.getRectangle().x -= 120 * Gdx.graphics.getDeltaTime();
                             distance1 = swordman.getRectangle().x;
                             golemOverlapArray.get(i).HP--;
-                        } */
+                        }
 
                 }
             } catch (IndexOutOfBoundsException s) {
@@ -610,27 +620,86 @@ public class WorldRenderer {
         }
     }
 
+    public void LV1()
+    {
+        if (zombieTime > 400) {
+            spawnzombie();
+            zombieTime = 0;
+        }
+    }
+
+    public void LV2()
+    {
+        if (zombieTime > 400) {
+            spawnzombie();
+            zombieTime = 0;
+        }
+
+        if(skeletonTime >1000){
+            spawnskeleton();
+            skeletonTime= 0;
+        }
+    }
+
+    public void LV3()
+    {
+        if (zombieTime > 400) {
+            spawnzombie();
+            zombieTime = 0;
+        }
+
+        if(skeletonTime >700){
+            spawnskeleton();
+            skeletonTime= 0;
+        }
+    }
+
+    public void LV4()
+    {
+        if (zombieTime > 400) {
+            spawnzombie();
+            zombieTime = 0;
+        }
+
+        if(skeletonTime >700){
+            spawnskeleton();
+            skeletonTime= 0;
+        }
+        if(golemTime == 2000){
+            spawnGolem();
+        }
+    }
+
     private void timeUpdate() {
         timer++;
-        if (timer > 10) {
+        GameTime++;
+        if (timer > 6) {
             money++;
             timer = 0;
         }
-
+        /*
         if (zombieTime > 300) {
             spawnzombie();
             zombieTime = 0;
         }
 
-        if(skeletonTime >400){
+        if(skeletonTime >700){
             spawnskeleton();
             skeletonTime= 0;
         }
 
-        if(golemTime >600){
-           // spawnGolem();
+        if(golemTime >1000){
+            spawnGolem();
             golemTime=0;
-        }
+        } */
+       if(GameTime<=2000)
+       {
+           LV1();
+       }
+       if(GameTime>2500 && GameTime<=4000)
+       {
+           LV2();
+       }
 
         skeletonTime++;
         zombieTime++;
