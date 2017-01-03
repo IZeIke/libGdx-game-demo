@@ -29,6 +29,7 @@ public class WorldRenderer {
     float elapsedTime;
     private BitmapFont font;
     private BitmapFont button;
+    private BitmapFont healt;
     private BitmapFont point;
     Array<Rectangle> stickmanArray;
     Array<Swordman> swordmanArray;
@@ -48,12 +49,15 @@ public class WorldRenderer {
     int GameTime;
     int money;
     int timer;
+    int hp;
     Array<Rectangle> stickman;
     Rectangle pos;
     int zombieTime;
     int skeletonTime;
     int golemTime;
     Texture background;
+    Texture win;
+    Texture lose;
     ShapeRenderer shapeRenderer;
     OrthographicCamera camera;
     int RUN = 0;
@@ -85,13 +89,17 @@ public class WorldRenderer {
         batch = demoGame.batch;
         this.world = world;
         font = new BitmapFont();
+        healt = new BitmapFont();
         button = new BitmapFont();
         button.setColor(Color.RED);
         point = new BitmapFont();
         point.setColor(Color.RED);
+        healt.setColor(Color.RED);
         font.getData().setScale(2);
+        healt.getData().setScale(2);
         stickmanArray = new Array<Rectangle>();
         // ZombieArray = new Array<Rectangle>();
+        hp=1000;
         money = 0;
         timer = 0;
         zombieTime = 0;
@@ -99,6 +107,8 @@ public class WorldRenderer {
         golemTime = 0;
         GameTime = 0;
         background = new Texture("BG (2).png");
+        win = new Texture("win&lose/win.png");
+        lose = new Texture("win&lose/lose.png");
         Chareacter_Selected = new Texture("Chracter_selected.png");
     }
 
@@ -142,6 +152,7 @@ public class WorldRenderer {
         batch.draw(Chareacter_Selected,100,50);
         button.draw(batch, "Q                      W                      E                      R", 100, 148);
         point.draw(batch,"50                    100                    150                  200", 100, 64);
+        healt.draw(batch,"Healt : "+hp,215,690);
         for (Swordman swordman : swordmanArray) {
             returnSwordman(swordman);
             batch.draw(swordman.getSwordmanAnimation().getKeyFrame(elapsedTime, true), swordman.getRectangle().x, swordman.getRectangle().y, 128, 128);
@@ -184,8 +195,16 @@ public class WorldRenderer {
             returnRobot(robot);
             batch.draw(robot.getRobotAnimation().getKeyFrame(elapsedTime, true), robot.getRectangle().x, robot.getRectangle().y, 128, 128);
         }
-
-        font.draw(batch, "" + money, 50, 690);
+        font.draw(batch, "Money : " + money, 50, 690);
+        if(GameTime >7100)
+        {
+            batch.draw(win, 360, 200);
+        }
+        if(hp<=0)
+        {
+            hp=0;
+            batch.draw(lose,390,240);
+        }
         batch.end();
         if (Gdx.input.isKeyJustPressed(Input.Keys.Q)) {
             if (money > 50) {
@@ -546,6 +565,7 @@ public class WorldRenderer {
             }
 
             if (zombie.getRectangle().x < 0) {
+                hp-=100;
                 iter_zombie.remove();
             }
         }
@@ -580,6 +600,7 @@ public class WorldRenderer {
             }
 
             if (skeleton.getRectangle().x < 0) {
+                hp-=200;
                 iter_skeleton.remove();
             }
         }
@@ -656,18 +677,10 @@ public class WorldRenderer {
 
     public void LV4()
     {
-        if (zombieTime > 400) {
-            spawnzombie();
-            zombieTime = 0;
-        }
-
-        if(skeletonTime >700){
-            spawnskeleton();
-            skeletonTime= 0;
-        }
-        if(golemTime == 2000){
+        if(golemTime == 0) {
             spawnGolem();
         }
+        golemTime = 1;
     }
 
     private void timeUpdate() {
@@ -677,21 +690,7 @@ public class WorldRenderer {
             money++;
             timer = 0;
         }
-        /*
-        if (zombieTime > 300) {
-            spawnzombie();
-            zombieTime = 0;
-        }
 
-        if(skeletonTime >700){
-            spawnskeleton();
-            skeletonTime= 0;
-        }
-
-        if(golemTime >1000){
-            spawnGolem();
-            golemTime=0;
-        } */
        if(GameTime<=2000)
        {
            LV1();
@@ -700,10 +699,18 @@ public class WorldRenderer {
        {
            LV2();
        }
+       if(GameTime > 4000 && GameTime <7000)
+       {
+           LV3();
+       }
+       if(GameTime > 7000)
+       {
+
+       }
+
 
         skeletonTime++;
         zombieTime++;
-        golemTime++;
     }
 
     private void settingUnit(Rectangle rc){

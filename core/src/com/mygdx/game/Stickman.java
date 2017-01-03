@@ -1,14 +1,12 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.Gdx;
+
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.Animation;
 import com.badlogic.gdx.graphics.g2d.TextureAtlas;
 import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.math.Vector2;
-import com.badlogic.gdx.math.Vector3;
-import com.sun.xml.internal.ws.client.sei.ResponseBuilder;
+
 
 /**
  * Created by harit on 10/20/2016.
@@ -24,8 +22,6 @@ public class Stickman {
     Animation Run_animation_Right, Run_animation_Stand;
     int LEFT = 2;
     int RIGHT = 1;
-    int STAND = 0;
-    Enemy zombie;
 
 
     //public Vector2 getPosition() {
